@@ -1,4 +1,4 @@
-#!/bin/zsh
+#!/bin/zsh -e
 
 # 配置大小写敏感
 git config --global core.ignorecase false

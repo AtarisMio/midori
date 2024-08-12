@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash -e
 
 chsh -s /bin/zsh
 
