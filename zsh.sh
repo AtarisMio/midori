@@ -4,7 +4,7 @@ chsh -s /bin/zsh
 
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
-cat << \EOF >> ~/zshrc
+cat << \EOF >> ~/.zshrc
 setopt APPEND_HISTORY
 setopt HIST_IGNORE_DUPS
 setopt HIST_IGNORE_SPACE
