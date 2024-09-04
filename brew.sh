@@ -10,10 +10,12 @@ UNAME_MACHINE="$(/usr/bin/uname -m)"
 
 if [[ "${UNAME_MACHINE}" == "arm64" ]]
 then
-  HOMEBREW_BIN='/opt/homebrew/bin/brew'
+  HOMEBREW_PREFIX='/opt/homebrew/'
 else
-  HOMEBREW_BIN='/usr/local/bin/brew'
+  HOMEBREW_PREFIX='/usr/local/'
 fi
+
+HOMEBREW_BIN="${HOMEBREW_PREFIX}/bin/brew"
 
 (echo; echo "eval \"\$($HOMEBREW_BIN shellenv)\"") >> ~/.zprofile
 eval "$($HOMEBREW_BIN shellenv)"
@@ -24,12 +26,12 @@ cat brew-apps.conf | xargs brew install
 
 echo 'add envs'
 
-cat << \EOF >> ~/.zshrc
+cat << EOF >> ~/.zshrc
 
 # nvm
-export NVM_DIR="$HOME/.nvm"
-[ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
-[ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
+export NVM_DIR="\$HOME/.nvm"
+[ -s "$HOMEBREW_PREFIX/opt/nvm/nvm.sh" ] && \. "$HOMEBREW_PREFIX/opt/nvm/nvm.sh"  # This loads nvm
+[ -s "$HOMEBREW_PREFIX/opt/nvm/etc/bash_completion.d/nvm" ] && \. "$HOMEBREW_PREFIX/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
 
 EOF
 
